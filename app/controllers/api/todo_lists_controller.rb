@@ -6,5 +6,11 @@ module Api
 
       respond_to :json
     end
+
+    def show
+      @todo_list = TodoList.find(params[:id])
+     
+      render json: @todo_list
+    end
   end
 end
