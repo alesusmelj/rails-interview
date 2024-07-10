@@ -4,8 +4,9 @@ module Api
 
         # POST api/todolists/:todo_list_id/todo_items
         def create
-            @todo_item = @todo_list.todo_items.new(todo_item_params)
-            
+            @todo_item = TodoItem.new(todo_item_params)
+            @todo_list.todo_items.push(@todo_item)
+
             if @todo_item.save 
                 render json: @todo_item, status: :created
             else
