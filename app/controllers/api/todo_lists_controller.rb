@@ -5,7 +5,7 @@ module Api
     def index
       @todo_lists = TodoList.all
 
-      respond_to :json
+      render json: @todo_lists
     end
 
     # GET /api/todolists/:id
@@ -58,8 +58,9 @@ module Api
       @todo_list.destroy
     end
 
-    # Strong params
     private
+    
+    # Strong params
       def todo_list_params
         params.require(:todo_list).permit(:name)
       end
